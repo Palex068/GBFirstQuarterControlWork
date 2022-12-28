@@ -78,6 +78,32 @@ string[] ChangeArray(string[] array)    // Создаем массив и зап
     return newArray;
 } 
 
+string[] ChangeArrayByList(string[] array) // Решение с использованием списка
+{
+    List<string> elementsList = new List<string>(array.Length);
+    for (int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length < 4) 
+            elementsList.Add(array[i]);
+    }
+    string[] newArray = elementsList.ToArray();
+    return newArray;
+}
+
+string[] ChangeArrayByString(string[] array) // Решение с использованием строки
+{
+    string elementsString = string.Empty;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length < 4) 
+            if(elementsString == string.Empty)
+                elementsString = array[i];
+            else elementsString = elementsString + " " + array[i];
+    }
+    string[] newArray = elementsString.Split(" ").ToArray();
+    return newArray;
+}
+
 Console.Clear();
 
 string[] firstArray = CreateInputArray();
@@ -86,5 +112,8 @@ Console.WriteLine($"\n[{string.Join("\t", firstArray)}]");
 
 string[] secondArray = ChangeArray(firstArray);
 
-Console.WriteLine($"\n[{string.Join("\t", ChangeArray(secondArray))}]");
+Console.WriteLine($"\n[{string.Join("\t", secondArray)}]");
 
+Console.WriteLine($"\n[{string.Join("\t", ChangeArrayByList(firstArray))}]");
+
+Console.WriteLine($"\n[{string.Join("\t", ChangeArrayByString(firstArray))}]");
