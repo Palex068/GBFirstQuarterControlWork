@@ -56,10 +56,10 @@ string[] ChangeArray(string[] array)    // Создаем массив и зап
                                         // случайными строчными значениями, длинна которых 
                                         // меньше либо равна 3 символам 
 {
-    int countValue = 0;
+    int countValue = 0, stringLength = 4;  // Добавил переменную - предел длины строк нового массива
     for (int i = 0; i < array.Length; i++)
     {
-        if(array[i].Length < 4)
+        if(array[i].Length < stringLength)
         {
             countValue++;
         }
@@ -69,7 +69,7 @@ string[] ChangeArray(string[] array)    // Создаем массив и зап
     int j = 0;
     for (int i = 0; i < array.Length; i++)
     {        
-        if(array[i].Length < 4)
+        if(array[i].Length < stringLength)
         {
             newArray[j] = array[i];
             j++;
@@ -81,9 +81,10 @@ string[] ChangeArray(string[] array)    // Создаем массив и зап
 string[] ChangeArrayByList(string[] array) // Решение с использованием списка
 {
     List<string> elementsList = new List<string>(array.Length);
+    int stringLength = 4;
     for (int i = 0; i < array.Length; i++)
     {
-        if(array[i].Length < 4) 
+        if(array[i].Length < stringLength) 
             elementsList.Add(array[i]);
     }
     string[] newArray = elementsList.ToArray();
@@ -93,9 +94,10 @@ string[] ChangeArrayByList(string[] array) // Решение с использо
 string[] ChangeArrayByString(string[] array) // Решение с использованием строки
 {
     string elementsString = string.Empty;
+    int stringLength = 4;
     for (int i = 0; i < array.Length; i++)
     {
-        if(array[i].Length < 4) 
+        if(array[i].Length < stringLength) 
             if(elementsString == string.Empty)
                 elementsString = array[i];
             else elementsString = elementsString + " " + array[i];
